@@ -26,22 +26,30 @@ function App() {
       <h1>WordCount</h1>
       <p className="subtitle">Instant text statistics in your browser.</p>
 
-      <textarea
-        aria-label="Input text"
-        className="editor"
-        onChange={(event) => {
-          setText(event.target.value)
-        }}
-        placeholder="Paste or type your text here..."
-        value={text}
-      />
+      <section className="layout">
+        <article className="panel">
+          <label htmlFor="input">Input text</label>
+          <textarea
+            aria-label="Input text"
+            className="editor"
+            id="input"
+            onChange={(event) => {
+              setText(event.target.value)
+            }}
+            placeholder="Paste or type your text here..."
+            value={text}
+          />
+        </article>
 
-      <section className="grid">
-        <StatCard label="Words" value={stats.words.toLocaleString()} />
-        <StatCard label="Characters" value={stats.characters.toLocaleString()} />
-        <StatCard label="Characters (no spaces)" value={stats.charactersNoSpaces.toLocaleString()} />
-        <StatCard label="Lines" value={stats.lines.toLocaleString()} />
-        <StatCard label="Reading time" value={`${stats.readingMinutes.toFixed(2)} min`} />
+        <article className="panel">
+          <section className="grid">
+            <StatCard label="Words" value={stats.words.toLocaleString()} />
+            <StatCard label="Characters" value={stats.characters.toLocaleString()} />
+            <StatCard label="Characters (no spaces)" value={stats.charactersNoSpaces.toLocaleString()} />
+            <StatCard label="Lines" value={stats.lines.toLocaleString()} />
+            <StatCard label="Reading time" value={`${stats.readingMinutes.toFixed(2)} min`} />
+          </section>
+        </article>
       </section>
     </main>
   )
